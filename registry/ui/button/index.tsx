@@ -88,3 +88,4 @@ function Button(_props: ButtonProps) {
 }
 
 export { Button, buttonVariants }
+export type { ButtonProps }

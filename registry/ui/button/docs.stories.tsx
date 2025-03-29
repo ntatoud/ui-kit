@@ -1,10 +1,11 @@
 import type { Meta } from '@storybook/react'
-import { MailIcon } from 'lucide-react'
+import { Mail, MailIcon } from 'lucide-react'
 
 import { Button } from '@/registry/ui/button'
+import { SrOnly } from '@/components/ui/sr-only'
 
 export default {
-  title: 'Button',
+  title: 'Components/Button',
 } satisfies Meta<typeof Button>
 
 export const Default = () => {
@@ -48,15 +49,19 @@ export const IconOnly = () => {
     <div className="flex gap-4">
       <Button size="icon-xs">
         <MailIcon />
+        <SrOnly>Send mail</SrOnly>
       </Button>
       <Button size="icon-sm">
         <MailIcon />
+        <SrOnly>Send mail</SrOnly>
       </Button>
       <Button size="icon">
         <MailIcon />
+        <SrOnly>Send mail</SrOnly>
       </Button>
       <Button size="icon-lg">
         <MailIcon />
+        <SrOnly>Send mail</SrOnly>
       </Button>
     </div>
   )
@@ -66,12 +71,12 @@ export const WithIcon = () => {
   return (
     <div className="flex gap-4">
       <Button>
-        <MailIcon />
+        <Mail />
         Button
       </Button>
       <Button>
         Button
-        <MailIcon />
+        <MailIcon aria-hidden />
       </Button>
     </div>
   )
