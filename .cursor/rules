@@ -1,0 +1,102 @@
+# Cursor Rules
+
+## Project Structure
+
+1. Components are organized into two main categories:
+   - Internal components: Located in `/components`
+   - Registry components: Located in `/registry`
+
+2. Registry components must:
+   - Be placed in `/registry/<style>/components/`
+   - Include required metadata in registry.json
+   - Follow the component structure guidelines
+
+3. File organization:
+   - Maximum depth for components: 2 levels
+   - Maximum depth for registry: 4 levels
+   - Maximum depth for lib: 1 level
+   - Use kebab-case for all file names
+
+
+## Import Guidelines
+
+1. Use absolute imports with @/ prefix
+2. Import order:
+   1. React
+   2. Next
+   3. External libraries
+   4. Internal components
+   5. Registry components
+   6. Lib
+   7. Types
+   8. Styles
+
+## TypeScript Guidelines
+
+1. Use strict mode
+2. Prefer interfaces over type aliases
+3. Component props naming: ComponentNameProps
+4. Place types in types.ts file
+
+## Styling Guidelines
+
+1. Use Tailwind CSS
+2. Prefer utility classes
+
+## Documentation Requirements
+
+1. Internal Components:
+   Required:
+   - Description
+   - Props
+   - Usage
+   Optional:
+   - Examples
+   - Variants
+
+2. Registry Components:
+   Required:
+   - Description
+   - Props
+   - Dependencies
+   - Usage
+   Optional:
+   - Examples
+   - Variants
+   - API
+
+## Git Guidelines
+
+1. Commit messages:
+   Format: <type>(<scope>): <description>
+   Types: feat, fix, docs, style, refactor, test, chore
+
+2. Branch naming:
+   Format: <type>/<description>
+   Types: feature, bugfix, hotfix, release
+
+## React Component Creation
+
+1. Before creating a new component:
+   - Check if a similar component exists in:
+     - /components
+     - /registry
+   - Consider if it should be internal or registry component
+
+2. Component Structure:
+   - Use TypeScript
+   - Follow the file structure guidelines
+   - Implement proper type definitions
+   - Add necessary documentation
+
+3. Component Implementation:
+   - Use shadcn/ui components when appropriate
+   - Follow Tailwind CSS best practices
+   - Implement proper error handling
+   - Add necessary tests
+
+4. Registry Component Additional Steps:
+   - Update registry.json with component metadata
+   - Add required documentation
+   - Ensure all dependencies are listed
+   - Test component in isolation
