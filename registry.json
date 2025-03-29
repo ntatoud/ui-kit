@@ -2,5 +2,26 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "acme",
   "homepage": "https://acme.com",
-  "items": []
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "description": "A fully customizable button component",
+      "files": [
+        {
+          "path": "registry/ui/button/index.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/button/docs.stories.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/button/button.test.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
 }
