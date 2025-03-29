@@ -1,4 +1,140 @@
 # Cursor Rules
+# Last updated: 2024-03-21
+
+# Core Rules
+1. NEVER submit code with warnings or errors unless ABSOLUTELY unavoidable
+2. ALWAYS fix linting issues before submitting
+3. ALWAYS fix formatting issues before submitting
+4. ALWAYS fix type errors before submitting
+5. ALWAYS fix build errors before submitting
+6. ALWAYS fix test failures before submitting
+7. ALWAYS fix security vulnerabilities before submitting
+8. ALWAYS fix performance issues before submitting
+9. ALWAYS fix accessibility issues before submitting
+10. ALWAYS fix documentation issues before submitting
+
+# Code Quality Rules
+1. ALWAYS use proper indentation
+2. ALWAYS use consistent quotes (single or double)
+3. ALWAYS use proper line endings
+4. ALWAYS use proper file encodings
+5. ALWAYS use proper file permissions
+6. ALWAYS use proper file naming conventions
+7. ALWAYS use proper directory structure
+8. ALWAYS use proper import/export statements
+9. ALWAYS use proper error handling
+10. ALWAYS use proper logging
+
+# Documentation Rules
+1. ALWAYS update documentation when changing code
+2. ALWAYS include proper JSDoc comments
+3. ALWAYS include proper README updates
+4. ALWAYS include proper changelog updates
+5. ALWAYS include proper API documentation
+6. ALWAYS include proper setup instructions
+7. ALWAYS include proper usage examples
+8. ALWAYS include proper troubleshooting guides
+9. ALWAYS include proper contribution guidelines
+10. ALWAYS include proper license information
+
+# Testing Rules
+1. ALWAYS write tests for new code
+2. ALWAYS update tests when changing code
+3. ALWAYS ensure tests pass before submitting
+4. ALWAYS include proper test coverage
+5. ALWAYS include proper test documentation
+6. ALWAYS include proper test setup
+7. ALWAYS include proper test cleanup
+8. ALWAYS include proper test isolation
+9. ALWAYS include proper test naming
+10. ALWAYS include proper test organization
+
+# Security Rules
+1. ALWAYS fix security vulnerabilities
+2. ALWAYS use proper authentication
+3. ALWAYS use proper authorization
+4. ALWAYS use proper input validation
+5. ALWAYS use proper output sanitization
+6. ALWAYS use proper error handling
+7. ALWAYS use proper logging
+8. ALWAYS use proper encryption
+9. ALWAYS use proper session management
+10. ALWAYS use proper access control
+
+# Performance Rules
+1. ALWAYS optimize code performance
+2. ALWAYS optimize build performance
+3. ALWAYS optimize test performance
+4. ALWAYS optimize deployment performance
+5. ALWAYS optimize database performance
+6. ALWAYS optimize network performance
+7. ALWAYS optimize memory usage
+8. ALWAYS optimize CPU usage
+9. ALWAYS optimize disk usage
+10. ALWAYS optimize cache usage
+
+# Accessibility Rules
+1. ALWAYS fix accessibility issues
+2. ALWAYS use proper ARIA attributes
+3. ALWAYS use proper semantic HTML
+4. ALWAYS use proper color contrast
+5. ALWAYS use proper keyboard navigation
+6. ALWAYS use proper screen reader support
+7. ALWAYS use proper focus management
+8. ALWAYS use proper alt text
+9. ALWAYS use proper heading structure
+10. ALWAYS use proper form labels
+
+# CI/CD Rules
+1. ALWAYS fix CI/CD pipeline issues
+2. ALWAYS use proper environment variables
+3. ALWAYS use proper secrets management
+4. ALWAYS use proper deployment strategies
+5. ALWAYS use proper rollback procedures
+6. ALWAYS use proper monitoring
+7. ALWAYS use proper logging
+8. ALWAYS use proper alerting
+9. ALWAYS use proper backup procedures
+10. ALWAYS use proper disaster recovery
+
+# Version Control Rules
+1. ALWAYS use proper commit messages
+2. ALWAYS use proper branch naming
+3. ALWAYS use proper PR descriptions
+4. ALWAYS use proper code review comments
+5. ALWAYS use proper merge strategies
+6. ALWAYS use proper conflict resolution
+7. ALWAYS use proper tag management
+8. ALWAYS use proper release management
+9. ALWAYS use proper changelog management
+10. ALWAYS use proper version management
+
+# Communication Rules
+1. ALWAYS communicate clearly
+2. ALWAYS document decisions
+3. ALWAYS explain changes
+4. ALWAYS provide context
+5. ALWAYS ask questions when needed
+6. ALWAYS respond to feedback
+7. ALWAYS update stakeholders
+8. ALWAYS follow up on issues
+9. ALWAYS maintain transparency
+10. ALWAYS be professional
+
+# Emergency Rules
+1. ALWAYS fix critical issues immediately
+2. ALWAYS notify stakeholders of critical issues
+3. ALWAYS follow proper incident response procedures
+4. ALWAYS document incident details
+5. ALWAYS perform post-mortem analysis
+6. ALWAYS implement preventive measures
+7. ALWAYS update documentation
+8. ALWAYS update procedures
+9. ALWAYS update training
+10. ALWAYS update monitoring
+
+# Final Rule
+ALWAYS remember: Any warning or error left unfixed could result in termination.
 
 ## Project Structure
 

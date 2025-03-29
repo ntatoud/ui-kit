@@ -7,44 +7,56 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  setup:
+    uses: ./.github/workflows/setup.yml
 
+  format:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Download dependencies
+        uses: actions/download-artifact@v3
         with:
-          node-version: '20'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        run: pnpm install
+          name: 'node_modules'
+          path: 'node_modules'
+          compression-level: 9
 
       - name: Check formatting
         run: pnpm prettier . --check
 
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download dependencies
+        uses: actions/download-artifact@v3
+        with:
+          name: 'node_modules'
+          path: 'node_modules'
+          compression-level: 9
+
       - name: Lint
         run: pnpm lint
+
+  test:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download dependencies
+        uses: actions/download-artifact@v3
+        with:
+          name: 'node_modules'
+          path: 'node_modules'
+          compression-level: 9
 
       - name: Run tests
         run: pnpm test 
