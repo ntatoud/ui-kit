@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import { useTheme } from "next-themes"
+import * as React from 'react'
+import { useTheme } from 'next-themes'
 
-import { Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Moon, Sun } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export function ModeToggle() {
   const { setTheme, resolvedTheme } = useTheme()
@@ -15,7 +15,7 @@ export function ModeToggle() {
       className="h-7 w-7"
       onClick={() => {
         startTransition(() => {
-          setTheme(resolvedTheme === "dark" ? "light" : "dark")
+          setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
         })
       }}
       size="icon"

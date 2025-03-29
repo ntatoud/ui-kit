@@ -65,6 +65,11 @@
    - Variants
    - API
 
+## Testing Requirements
+
+2. Naming: *.test.tsx
+3. Minimum coverage: 80%
+
 ## Git Guidelines
 
 1. Commit messages:
@@ -100,3 +105,49 @@
    - Add required documentation
    - Ensure all dependencies are listed
    - Test component in isolation
+
+## Code Quality and CI
+
+1. Code Formatting:
+   - Use Prettier with Tailwind plugin
+   - Configuration:
+     ```json
+     {
+       "semi": false,
+       "singleQuote": true,
+       "tabWidth": 2,
+       "trailingComma": "es5",
+       "plugins": ["prettier-plugin-tailwindcss"]
+     }
+     ```
+   - Ignore patterns:
+     - Build artifacts (.next, build)
+     - Dependencies (node_modules)
+     - Generated files (coverage)
+     - Lock files (pnpm-lock.yaml)
+     - Public assets (public)
+
+2. Available Scripts:
+   - `pnpm format` - Format all files
+   - `pnpm format:check` - Check formatting
+   - `pnpm lint` - Run ESLint
+   - `pnpm test` - Run tests once
+   - `pnpm test:watch` - Run tests in watch mode
+   - `pnpm test:coverage` - Run tests with coverage
+
+3. CI Pipeline:
+   - Runs on:
+     - Push to main
+     - Pull requests to main
+   - Steps:
+     1. Setup Node.js and pnpm
+     2. Install dependencies with caching
+     3. Check code formatting
+     4. Run linting
+     5. Run tests
+
+4. Pre-commit Checks:
+   - Format code
+   - Run linting
+   - Run tests
+   - Ensure all checks pass before committing
