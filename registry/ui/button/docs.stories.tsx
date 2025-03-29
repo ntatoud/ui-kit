@@ -2,7 +2,6 @@ import type { Meta } from '@storybook/react'
 import { Mail, MailIcon } from 'lucide-react'
 
 import { Button } from '@/registry/ui/button'
-import { SrOnly } from '@/components/ui/sr-only'
 
 export default {
   title: 'Components/Button',
@@ -49,19 +48,19 @@ export const IconOnly = () => {
     <div className="flex gap-4">
       <Button size="icon-xs">
         <MailIcon />
-        <SrOnly>Send mail</SrOnly>
+        <span className="sr-only">Send mail</span>
       </Button>
       <Button size="icon-sm">
         <MailIcon />
-        <SrOnly>Send mail</SrOnly>
+        <span className="sr-only">Send mail</span>
       </Button>
       <Button size="icon">
         <MailIcon />
-        <SrOnly>Send mail</SrOnly>
+        <span className="sr-only">Send mail</span>
       </Button>
       <Button size="icon-lg">
         <MailIcon />
-        <SrOnly>Send mail</SrOnly>
+        <span className="sr-only">Send mail</span>
       </Button>
     </div>
   )

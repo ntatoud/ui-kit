@@ -7,6 +7,7 @@
       "name": "button",
       "type": "registry:component",
       "title": "Button",
+      "registryDependencies": ["http://localhost:3000/r/spinner.json"],
       "description": "A fully customizable button component",
       "files": [
         {
@@ -19,6 +20,36 @@
         },
         {
           "path": "registry/ui/button/button.test.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "dependencies": ["@uidotdev/usehooks"],
+      "registryDependencies": ["http://localhost:3000/r/button.json"],
+      "description": "A fully customizable input component",
+      "files": [
+        {
+          "path": "registry/ui/input/index.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/input/docs.stories.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:component",
+      "title": "Spinner",
+      "description": "A simple spinner component",
+      "files": [
+        {
+          "path": "registry/ui/spinner/index.tsx",
           "type": "registry:ui"
         }
       ]

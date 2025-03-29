@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "type": "registry:component",
+  "title": "Input",
+  "description": "A fully customizable spinner component",
+  "files": [
+    {
+      "path": "registry/ui/spinner/index.tsx",
+      "content": "import { Loader2Icon } from 'lucide-react'\n\nimport { cn } from '@/lib/utils'\n\nexport const Spinner = (props: { full?: boolean; className?: string }) => {\n  return (\n    <span\n      className={cn(\n        props.full && 'flex flex-1 items-center justify-center',\n        props.className\n      )}\n    >\n      <Loader2Icon className=\"animate-spin\" />\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}
