@@ -2,8 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinner",
   "type": "registry:component",
-  "title": "Input",
-  "description": "A fully customizable spinner component",
+  "title": "Spinner",
+  "description": "A simple spinner component",
   "files": [
     {
       "path": "registry/ui/spinner/index.tsx",

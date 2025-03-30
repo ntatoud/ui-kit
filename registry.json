@@ -53,6 +53,84 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "form",
+      "type": "registry:component",
+      "title": "Form Components",
+      "dependencies": ["@tanstack/react-form"],
+      "registryDependencies": [
+        "http://localhost:3000/r/button.json",
+        "http://localhost:3000/r/input.json"
+      ],
+      "description": "A collection of form components using the Tanstack Form library",
+      "files": [
+        {
+          "path": "registry/form/index.tsx",
+          "type": "registry:ui",
+          "target": "form/index.tsx"
+        },
+        {
+          "path": "registry/form/hooks/index.ts",
+          "type": "registry:ui",
+          "target": "form/hooks/index.ts"
+        },
+        {
+          "path": "registry/form/hooks/form-context.ts",
+          "type": "registry:ui",
+          "target": "form/hooks/form-context.ts"
+        },
+        {
+          "path": "registry/form/hooks/use-field-state.ts",
+          "type": "registry:ui",
+          "target": "form/hooks/use-field-state.ts"
+        },
+        {
+          "path": "registry/form/components/index.tsx",
+          "type": "registry:ui",
+          "target": "form/components/index.tsx"
+        },
+        {
+          "path": "registry/form/components/_partials/index.tsx",
+          "type": "registry:ui",
+          "target": "form/components/_partials/index.tsx"
+        },
+        {
+          "path": "registry/form/components/_partials/field-description.tsx",
+          "type": "registry:ui",
+          "target": "form/components/_partials/field-description.tsx"
+        },
+        {
+          "path": "registry/form/components/_partials/field-error.tsx",
+          "type": "registry:ui",
+          "target": "form/components/_partials/field-error.tsx"
+        },
+        {
+          "path": "registry/form/components/_partials/field-item.tsx",
+          "type": "registry:ui",
+          "target": "form/components/_partials/field-item.tsx"
+        },
+        {
+          "path": "registry/form/components/_partials/field-label.tsx",
+          "type": "registry:ui",
+          "target": "form/components/_partials/field-label.tsx"
+        },
+        {
+          "path": "registry/form/components/_partials/subscribe-button.tsx",
+          "type": "registry:ui",
+          "target": "form/components/_partials/subscribe-button.tsx"
+        },
+        {
+          "path": "registry/form/components/fields/index.tsx",
+          "type": "registry:ui",
+          "target": "form/components/fields/index.tsx"
+        },
+        {
+          "path": "registry/form/components/fields/field-text/index.tsx",
+          "type": "registry:ui",
+          "target": "form/components/fields/field-text/index.tsx"
+        }
+      ]
     }
   ]
 }
