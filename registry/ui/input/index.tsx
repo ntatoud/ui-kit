@@ -87,7 +87,7 @@ function Input({
         data-slot="input"
         className={cn(
           'flex h-full w-full outline-none',
-          'disabled:cursor-not-allowed',
+          'disabled:cursor-not-allowed, disabled:bg-muted',
           inputClassName
         )}
         style={{

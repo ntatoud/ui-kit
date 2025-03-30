@@ -1,0 +1,94 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form",
+  "type": "registry:component",
+  "title": "Form Components",
+  "description": "A collection of form components using the Tanstack Form library",
+  "dependencies": [
+    "@tanstack/react-form"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button.json",
+    "http://localhost:3000/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "registry/form/index.tsx",
+      "content": "import { createFormHook } from '@tanstack/react-form'\nimport {\n  FieldText,\n  FieldError,\n  FieldLabel,\n  FieldDescription,\n  SubscribeButton,\n} from '@/registry/form/components'\n\nimport {\n  fieldContext,\n  formContext,\n  useFieldContext,\n  useFormContext,\n} from '@/registry/form/hooks'\n\nconst { useAppForm, withForm } = createFormHook({\n  fieldContext,\n  formContext,\n  fieldComponents: {\n    // Misc\n    Error: FieldError,\n    Label: FieldLabel,\n    Description: FieldDescription,\n\n    // Fields\n    Text: FieldText,\n  },\n  formComponents: {\n    SubscribeButton,\n  },\n})\n\nexport { useAppForm as useForm, withForm, useFieldContext, useFormContext }\n",
+      "type": "registry:ui",
+      "target": "form/index.tsx"
+    },
+    {
+      "path": "registry/form/hooks/index.ts",
+      "content": "export * from '@/registry/form/hooks/form-context'\nexport * from '@/registry/form/hooks/use-field-state'\n",
+      "type": "registry:ui",
+      "target": "form/hooks/index.ts"
+    },
+    {
+      "path": "registry/form/hooks/form-context.ts",
+      "content": "import { createFormHookContexts } from '@tanstack/react-form'\n\nexport const { fieldContext, formContext, useFieldContext, useFormContext } =\n  createFormHookContexts()\n",
+      "type": "registry:ui",
+      "target": "form/hooks/form-context.ts"
+    },
+    {
+      "path": "registry/form/hooks/use-field-state.ts",
+      "content": "import { type AnyFieldApi, useStore } from '@tanstack/react-form'\n\nexport const useFieldState = (field: AnyFieldApi) =>\n  useStore(field.store, (state) => ({\n    isInvalid: state.meta.errors.length > 0,\n    errors: state.meta.errors.map((error) => error?.message).join(', '),\n  }))\n",
+      "type": "registry:ui",
+      "target": "form/hooks/use-field-state.ts"
+    },
+    {
+      "path": "registry/form/components/index.tsx",
+      "content": "export * from '@/registry/form/components/_partials'\nexport { Form, type FormProps } from '@/registry/form/components/form'\n\n// Fields\nexport { FieldText } from '@/registry/form/components/fields'\n",
+      "type": "registry:ui",
+      "target": "form/components/index.tsx"
+    },
+    {
+      "path": "registry/form/components/_partials/index.tsx",
+      "content": "export {\n  FieldDescription,\n  type FieldDescriptionProps,\n} from './field-description'\nexport { FieldError, type FieldErrorProps } from './field-error'\nexport {\n  FieldItem,\n  type FieldItemProps,\n  useFieldItemContext,\n} from './field-item'\nexport { FieldLabel, type FieldLabelProps } from './field-label'\nexport { SubscribeButton } from './subscribe-button'\n",
+      "type": "registry:ui",
+      "target": "form/components/_partials/index.tsx"
+    },
+    {
+      "path": "registry/form/components/_partials/field-description.tsx",
+      "content": "import { cn } from '@/lib/utils'\nimport { useFieldItemContext } from '@/registry/form/components/_partials/field-item'\nimport { ComponentProps } from 'react'\n\nexport type FieldDescriptionProps = ComponentProps<'div'>\n\nexport function FieldDescription({\n  className,\n  ...props\n}: FieldDescriptionProps) {\n  const ctx = useFieldItemContext()\n\n  return (\n    <div\n      id={ctx.descriptionId}\n      className={cn('text-sm text-muted-foreground', className)}\n      {...props}\n    />\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "form/components/_partials/field-description.tsx"
+    },
+    {
+      "path": "registry/form/components/_partials/field-error.tsx",
+      "content": "import { ComponentProps } from 'react'\nimport { useFieldState } from '@/registry/form/hooks/use-field-state'\nimport { useFieldItemContext } from './field-item'\nimport { cn } from '@/lib/utils'\nimport { useFieldContext } from '@/registry/form/hooks/form-context'\n\nexport type FieldErrorProps = ComponentProps<'em'>\n\nexport function FieldError({ className, ...props }: FieldErrorProps) {\n  const field = useFieldContext()\n  const ctx = useFieldItemContext()\n  const { errors } = useFieldState(field)\n\n  if (!errors) return\n\n  return (\n    <em\n      id={ctx.errorId}\n      className={cn('text-sm text-red-500', className)}\n      role=\"alert\"\n      {...props}\n    >\n      {errors}\n    </em>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "form/components/_partials/field-error.tsx"
+    },
+    {
+      "path": "registry/form/components/_partials/field-item.tsx",
+      "content": "import { cn } from '@/lib/utils'\nimport { Slot } from '@radix-ui/react-slot'\nimport { ComponentProps, createContext, useContext, useId } from 'react'\n\ntype FieldItemContextValues = {\n  id: string\n  descriptionId: string\n  errorId: string\n  required?: boolean\n}\n\nconst FieldItemContext = createContext<FieldItemContextValues | null>(null)\n\nexport const useFieldItemContext = () => {\n  const context = useContext(FieldItemContext)\n\n  if (!context) {\n    throw new Error('FieldItem must be used within a FieldItemContext')\n  }\n\n  return context\n}\nexport type FieldItemProps = ComponentProps<'div'> & {\n  required?: boolean\n  asChild?: boolean\n}\n\nexport function FieldItem(props: FieldItemProps) {\n  const { asChild, className, ...rest } = props\n\n  const Component = asChild ? Slot : 'div'\n  const _id = useId()\n\n  const id = props.id ?? _id\n  const context = {\n    required: props.required,\n    id,\n    descriptionId: `${id}-description`,\n    errorId: `${id}-error`,\n  }\n\n  return (\n    <FieldItemContext.Provider value={context}>\n      <Component className={cn('flex flex-col gap-1.5', className)} {...rest} />\n    </FieldItemContext.Provider>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "form/components/_partials/field-item.tsx"
+    },
+    {
+      "path": "registry/form/components/_partials/field-label.tsx",
+      "content": "import { ComponentProps } from 'react'\n\nimport { cn } from '@/lib/utils'\n\nimport { useFieldItemContext } from '@/registry/form/components/_partials/field-item'\n\nexport type FieldLabelProps = ComponentProps<'label'>\n\nexport const FieldLabel = ({\n  className,\n  children,\n  ...props\n}: FieldLabelProps) => {\n  const ctx = useFieldItemContext()\n  return (\n    <label\n      htmlFor={ctx.id}\n      className={cn(\n        'flex gap-1.5 align-baseline font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',\n        className\n      )}\n      {...props}\n    >\n      {children}\n      {ctx.required && (\n        <span className=\"text-red-500\" aria-hidden>\n          *\n        </span>\n      )}\n    </label>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "form/components/_partials/field-label.tsx"
+    },
+    {
+      "path": "registry/form/components/_partials/subscribe-button.tsx",
+      "content": "import { Button, ButtonProps } from '@/registry/ui/button'\nimport { useFormContext } from '@/registry/form/hooks/form-context'\n\nexport function SubscribeButton(props: ButtonProps) {\n  const form = useFormContext()\n  return (\n    <form.Subscribe\n      selector={(state) => state.isSubmitted && !state.isFieldsValid}\n    >\n      {(isDisabled) => <Button disabled={isDisabled} {...props} />}\n    </form.Subscribe>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "form/components/_partials/subscribe-button.tsx"
+    },
+    {
+      "path": "registry/form/components/fields/index.tsx",
+      "content": "export { FieldText } from './field-text'\n",
+      "type": "registry:ui",
+      "target": "form/components/fields/index.tsx"
+    },
+    {
+      "path": "registry/form/components/fields/field-text/index.tsx",
+      "content": "import { ComponentProps } from 'react'\nimport { Input, InputProps } from '@/registry/ui/input'\nimport { AlertTriangle } from 'lucide-react'\nimport { FieldError, useFieldItemContext } from '@/registry/form/components'\nimport { useFieldContext, useFieldState } from '@/registry/form/hooks'\nimport { cn } from '@/lib/utils'\n\ntype FieldTextValue = string\ntype FieldTextProps = InputProps & {\n  containerProps?: ComponentProps<'div'>\n}\n\nexport function FieldText({ containerProps, ...props }: FieldTextProps) {\n  const field = useFieldContext<FieldTextValue>()\n  const ctx = useFieldItemContext()\n\n  const { isInvalid } = useFieldState(field)\n  return (\n    <div\n      {...containerProps}\n      className={cn('flex flex-1 flex-col gap-1', containerProps?.className)}\n    >\n      <Input\n        value={field.state.value}\n        onChange={(e) => field.handleChange(e.target.value)}\n        aria-describedby={\n          isInvalid ? `${ctx.descriptionId} ${ctx.errorId}` : ctx.descriptionId\n        }\n        aria-invalid={isInvalid ? 'true' : undefined}\n        aria-required={ctx.required}\n        endElement={\n          isInvalid && <AlertTriangle className=\"size-4 text-red-500\" />\n        }\n        {...props}\n      />\n      <FieldError />\n    </div>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "form/components/fields/field-text/index.tsx"
+    }
+  ]
+}
